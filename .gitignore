@@ -1,0 +1,12 @@
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+node_modules/
+
+# Keep the source-of-truth video folder out of the deployed site —
+# only static/videos/ (clean copies) should be pushed.
+supplement videos v3/
