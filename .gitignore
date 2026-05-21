@@ -11,3 +11,7 @@ node_modules/
 # only static/videos/ (clean copies) should be pushed.
 supplement videos v3/
 web_video/
+
+# Oversized overview video — hosted externally (YouTube/Bilibili), never pushed
+Unical_video_v1.mp4
+*.mp4.bak

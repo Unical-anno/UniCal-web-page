@@ -38,6 +38,10 @@
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
         Paper
       </a>
+      <button class="link-btn link-btn-accent" type="button" onclick="openVideo()">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        Video
+      </button>
       <a class="link-btn" href="https://mega.nz/file/YJ8nAaoD#j2ttlPKTz0Wd9A6MQzj7UcyyUjzwJzNmvbcQdzbxhNM" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M5 20h14v-2H5v2zm0-10h4v6h6v-6h4l-7-7-7 7z"/></svg>
         Code (.zip)
@@ -71,7 +75,7 @@
 <section class="band band-soft">
   <div class="container">
     <p class="lead">
-      A <strong>3D scanner cannot see transparent objects</strong> — we turn this limitation into a free calibration channel. Pairing optical scanners with transparent indenters reveals the underlying tactile deformation, synchronized with 3-axis force, <em>across heterogeneous sensors</em>. One shared model reconstructs depth, force vectors, and dense force maps at <strong>35 fps</strong>.
+      A <strong>3D scanner sees straight through transparent objects and cannot detect them</strong> — we turn this limitation into a free calibration channel. Pairing optical scanners with transparent indenters reveals the underlying tactile deformation, synchronized with 3-axis force, <em>across heterogeneous sensors</em>. One shared model reconstructs depth, force vectors, and dense force maps at <strong>35 fps</strong>.
     </p>
     <div class="kpi-grid">
       <div class="kpi"><div class="kpi-value">91%+</div><div class="kpi-label">Depth a₁ accuracy</div></div>
@@ -82,18 +86,34 @@
   </div>
 </section>
 
+<!-- ============= Method Overview (Workflow figure) ============= -->
+<section class="band band-soft">
+  <div class="container">
+    <h2 class="section-title">Method Overview</h2>
+    <p class="section-intro">
+      Transparent indenters and optical scanning acquire deformation point clouds and force ground truth across heterogeneous visuotactile sensors. Training then proceeds in two stages: <strong>Stage 1</strong> learns contact-area prediction from sensor-specific tactile images, providing pretrained encoder weights for <strong>Stage 2</strong>, which performs unified reconstruction — jointly predicting depth maps, normal force maps, and 3-axis force from a single monocular tactile image.
+    </p>
+    <figure class="figure">
+      <img src="static/images/Workflow.png" alt="UniCal workflow: transparent-indenter calibration produces deformation and force ground truth, feeding a two-stage pipeline of contact-area pretraining and unified depth-and-force reconstruction" loading="lazy">
+      <figcaption>
+        <strong>Workflow of UniCal.</strong> The calibration system pairs transparent indenters with optical scanning to collect metric deformation and 3-axis force ground truth, which supervises a two-stage learning pipeline for cross-sensor depth and force reconstruction.
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
 <!-- ============= Calibration Hardware (Image + Video 1) ============= -->
 <section class="band">
   <div class="container">
     <h2 class="section-title">Calibration Hardware</h2>
     <p class="section-intro">
-      Infrared light transmits through transparent media with negligible refraction, and the lack of surface texture invalidates stereo matching. Both infrared and binocular scanners therefore <em>bypass</em> the transparent indenter and register the underlying tactile surface — the foundation of our calibration framework.
+      Infrared light transmits through transparent media with negligible refraction, and the lack of surface texture invalidates stereo matching. Both infrared and binocular scanners therefore <em>cannot detect</em> the transparent indenter and see straight through it, registering the underlying tactile surface instead — the foundation of our calibration framework.
     </p>
 
     <figure class="figure">
-      <img src="static/images/hardware.png" alt="UniCal hardware: assembled view and exploded view with three labeled modules">
+      <img src="static/images/hardware.png" alt="UniCal calibration hardware: 3D scanning principle, hardware prototype with exploded schematic, and point-cloud validation with and without a transparent object">
       <figcaption>
-        <strong>Hardware prototype (left) and exploded view (right).</strong> Three modules: the <strong>3D Scanning Module</strong> (clevis joints, servo, gantry column, 3D scanner), the <strong>Pressing Module</strong> (indenter holder, tactile sensor, linear actuator, force sensor), and the <strong>Rotational Module</strong> (rotational base, servo motor, base plate).
+        <strong>3D calibration hardware and transparency-insensitivity validation.</strong> (a) Operating principle of the 3D scanning system — dual stereo camera pairs and an infrared projector. (b) Hardware prototype and exploded schematic. (c) Point-cloud scans with and without a transparent object, validating the foundation of our calibration framework.
       </figcaption>
     </figure>
 
@@ -188,28 +208,28 @@
   <div class="container">
     <h2 class="section-title">Generalization to Everyday Objects</h2>
     <p class="section-intro">
-      Real-time depth and force reconstruction on objects unseen during training — one shared model, four very different sensors.
+      Real-time depth and force reconstruction on daily objects.
     </p>
     <div class="video-grid two-col-grid">
       <figure class="video-card">
         <div class="video-wrap"><video controls preload="metadata" playsinline><source src="static/videos/video2.mp4" type="video/mp4"></video></div>
-        <figcaption><strong>GelSight</strong> on unseen objects</figcaption>
+        <figcaption><strong>GelSight</strong> on everyday objects</figcaption>
       </figure>
       <figure class="video-card">
         <div class="video-wrap"><video controls preload="metadata" playsinline><source src="static/videos/video3.mp4" type="video/mp4"></video></div>
-        <figcaption><strong>Tac3D</strong> on unseen objects</figcaption>
+        <figcaption><strong>Tac3D</strong> on everyday objects</figcaption>
       </figure>
       <figure class="video-card">
         <div class="video-wrap"><video controls preload="metadata" playsinline><source src="static/videos/video4.mp4" type="video/mp4"></video></div>
-        <figcaption><strong>DM-Tac</strong> on unseen objects</figcaption>
+        <figcaption><strong>DM-Tac</strong> on everyday objects</figcaption>
       </figure>
       <figure class="video-card">
         <div class="video-wrap"><video controls preload="metadata" playsinline><source src="static/videos/video5.mp4" type="video/mp4"></video></div>
-        <figcaption><strong>9DTact</strong> on unseen objects</figcaption>
+        <figcaption><strong>9DTact</strong> on everyday objects</figcaption>
       </figure>
     </div>
     <figure class="figure" style="margin-top:32px">
-      <img src="static/images/Multisensor_daily_ob.png" alt="Reconstruction on unseen objects (still frames)">
+      <img src="static/images/Multisensor_daily_ob.png" alt="Reconstruction on everyday objects (still frames)">
       <figcaption>
         Still-frame snapshots — (a) letter Z, (b) shell, (c) USB plug, (d) letter A.
       </figcaption>
@@ -276,6 +296,14 @@
     <p>No tracking, no analytics.</p>
   </div>
 </footer>
+
+<!-- ============= Video Modal ============= -->
+<div id="video-modal" class="video-modal" onclick="closeVideo(event)">
+  <div class="video-modal-inner">
+    <button class="video-modal-close" type="button" onclick="closeVideo()" aria-label="Close">&times;</button>
+    <div class="video-modal-frame" id="video-modal-frame"></div>
+  </div>
+</div>
 
 <script src="static/js/script.js"></script>
 </body>
