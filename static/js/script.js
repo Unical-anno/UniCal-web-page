@@ -17,7 +17,7 @@ function copyBib(btn) {
 
 // ---- Overview video modal ----
 // Local overview video served from the site (static/videos/).
-const VIDEO_SRC = "static/videos/Unical_video_v1_2.mp4";
+const VIDEO_SRC = "static/videos/unical_video_v3_1.mp4";
 
 function openVideo() {
   const frame = document.getElementById('video-modal-frame');

@@ -13,8 +13,10 @@ supplement videos v3/
 web_video/
 
 # Overview-video working files kept out of the deployed site.
-# Only static/videos/Unical_video_v1_2.mp4 is served. Anchored to web root
+# Only static/videos/unical_video_v3_1.mp4 is served. Anchored to web root
 # with a leading slash so static/videos/ copies stay tracked.
 /Unical_video_v1.mp4
 /Unical_video_v1_1.mp4
+/unical_video_v3.mp4
+/unical_video_v3_1.mp4
 *.mp4.bak
