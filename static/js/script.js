@@ -16,18 +16,13 @@ function copyBib(btn) {
 }
 
 // ---- Overview video modal ----
-// Paste the embed URL here once the video is uploaded:
-//   YouTube:  https://www.youtube.com/embed/VIDEO_ID
-//   Bilibili: https://player.bilibili.com/player.html?bvid=BVxxxxxxxx&autoplay=0
-const VIDEO_EMBED_URL = "https://www.youtube.com/embed/VIDEO_ID";
+// Local overview video served from the site (static/videos/).
+const VIDEO_SRC = "static/videos/Unical_video_v1_2.mp4";
 
 function openVideo() {
   const frame = document.getElementById('video-modal-frame');
-  const sep = VIDEO_EMBED_URL.includes('?') ? '&' : '?';
   frame.innerHTML =
-    '<iframe src="' + VIDEO_EMBED_URL + sep + 'autoplay=1" ' +
-    'frameborder="0" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" ' +
-    'allowfullscreen></iframe>';
+    '<video src="' + VIDEO_SRC + '" controls autoplay playsinline preload="auto"></video>';
   document.getElementById('video-modal').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
